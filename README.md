@@ -1,27 +1,103 @@
-# Projeto
+# Projeto Fullstack - Angular + NestJS
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.14.
+## 📘 Documentação do Projeto
 
-## Development server
+### 🔧 Como executar o projeto
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+**Backend (NestJS):**
+1. Instale as dependências:
+   ```bash
+   npm install
+   ```
+2. Crie um arquivo `.env` com as variáveis de ambiente necessárias para o banco de dados:
+   ```
+   DB_HOST=...
+   DB_PORT=...
+   DB_USERNAME=...
+   DB_PASSWORD=...
+   DB_NAME=...
+   JWT_SECRET=...
+   ```
+3. Execute a aplicação:
+   ```bash
+   npm run start:dev
+   ```
 
-## Code scaffolding
+**Frontend (Angular):**
+1. Instale as dependências:
+   ```bash
+   npm install
+   ```
+2. Configure o arquivo `environment.ts` com a URL da API:
+   ```ts
+   export const environment = {
+     production: false,
+     apiUrl: 'http://localhost:3000',
+   };
+   ```
+3. Execute:
+   ```bash
+   ng serve
+   ```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+> **Observação**: O projeto ainda não foi publicado online, mas está preparado para deploy em serviços como Railway (backend) e Netlify (frontend).
 
-## Build
+---
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### Como testar
 
-## Running unit tests
+- Para testar o login:
+  - Use o email padrão: `admin@gmail.com`
+  - Senha: `1234`
+- O token é salvo via `localStorage` e usado para autenticação nas demais rotas.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+---
 
-## Running end-to-end tests
+## Tecnologias e bibliotecas utilizadas
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+- **Backend:**
+  - NestJS
+  - TypeORM
+  - PostgreSQL
+  - JWT (para autenticação)
 
-## Further help
+- **Frontend:**
+  - Angular
+  - Angular Forms
+  - Angular Router
+  - HttpClient
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+---
+
+## Por que escolhi essas tecnologias?
+
+- **NestJS**: estrutura organizada, com injeção de dependência nativa, muito bom para projetos escaláveis.
+- **Angular**: já possui estrutura pronta para formulários, rotas, e integração com APIs REST.
+- **PostgreSQL**: banco de dados robusto, gratuito, bem suportado.
+
+---
+
+## Princípios de engenharia de software aplicados
+
+- **Separacão de responsabilidades**: os módulos estão bem divididos entre autenticação, usuários e tarefas.
+- **DRY (Don't Repeat Yourself)**: evitei repetição de código criando serviços reutilizáveis.
+- **Segurança**: uso de JWT para autenticação protegendo rotas privadas.
+
+---
+
+## Desafios enfrentados
+
+- **Deploy no Railway e Netlify**: tentei configurar, mas optei por deixar fora do ar por enquanto. O projeto está pronto para isso.
+- **CORS entre frontend e backend**: adicionei configurações personalizadas no `main.ts` do NestJS para permitir requisições do frontend.
+- **Prerendering do Angular quebrando com `localStorage`**: optei por não usar SSR para evitar esse tipo de erro.
+
+---
+
+## Melhorias possíveis
+
+- **Publicar o projeto online** em Railway (backend) e Netlify (frontend).
+- **Adicionar refresh token e roles** para tornar a autenticação mais robusta.
+- **Implementar testes unitários e e2e** no backend e frontend.
+- **Criar um sistema de mensagens em tempo real** com WebSocket para colaboração.
+- **Melhorar o layout e responsividade do frontend** com alguma lib de UI como Tailwind ou Angular Material.
+
